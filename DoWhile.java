@@ -1,11 +1,12 @@
+
+import java.util.Random;
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
-
-import java.util.Scanner;
 
 /**
  *
@@ -19,28 +20,39 @@ public class DoWhile {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("Ingrese una palabra para invertirla:");
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
 
         
-        Scanner lector = new Scanner(System.in);
-        String palabra = lector.nextLine();
+        int numProductos = random.nextInt(23) + 1;
 
-        // optenemos la longitud de la palabra para asi voltearla 
-        int longitud = palabra.length() - 1;
+        System.out.println("Se generaron " + numProductos + " productos");
 
-        //Aqui se almacena la palabra que entro por el scanner 
-        String palabraInvertida = "";
-
-       
+        double total = 0;
+        int i = 0;
         do {
-            palabraInvertida += palabra.charAt(longitud);
-            longitud--;
-        } while (longitud >= 0);
+            System.out.println("nombre del producto " + (i + 1));
+            String nombreProducto = sc.nextLine();
 
+            System.out.println("cantidad del producto " + (i + 1));
+            int cantidad = sc.nextInt();
+            sc.nextLine();
+
+            System.out.println("precio del producto " + (i + 1));
+            double precio = sc.nextDouble();
+            sc.nextLine();
+
+          
+            double subTotal = cantidad * precio;
+            total += subTotal;
+
+            System.out.println("Producto: " + nombreProducto + ", cantidad: " + cantidad + ", precio: " + precio + ", subTotal: " + subTotal);
+            i++;
+        } while (i < numProductos);
+
+        System.out.println("El total es: " + total);
         
-        System.out.println( palabraInvertida);
-        
-      
+     
     }
     
 }

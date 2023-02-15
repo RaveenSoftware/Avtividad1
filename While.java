@@ -1,11 +1,12 @@
+
+import java.util.Random;
+import java.util.Scanner;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
-
-import java.util.Scanner;
 
 /**
  *
@@ -19,28 +20,34 @@ public class While {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        System.out.println("Ingrese una palabra para invertirla:");
+        Scanner sc = new Scanner(System.in);
+        Random random = new Random();
+        int numProductos = random.nextInt(23) + 1;
+        System.out.println("Se generaron " + numProductos + " productos");
+        double total = 0;
+        int i = 0;
+        while (i < numProductos) {
+            System.out.println(" nombre del producto " + (i + 1));
+            String nombreProducto = sc.nextLine();
 
-     
-        Scanner lector = new Scanner(System.in);
-        String palabra = lector.nextLine();
+            System.out.println("cantidad del producto " + (i + 1));
+            int cantidad = sc.nextInt();
+            sc.nextLine();
 
-        
-        String palabraInvertida = "";
-        
-        int longitud = palabra.length() - 1;
+            System.out.println("precio del producto " + (i + 1));
+            double precio = sc.nextDouble();
+            sc.nextLine();
 
-        
-        while (longitud >= 0) {
-            palabraInvertida += palabra.charAt(longitud);
-            longitud--;
+            double subTotal = cantidad * precio;
+            total += subTotal;
+            System.out.println("Producto: " + nombreProducto + ", cantidad: " + cantidad + ", precio: " + precio + ", subTotal: " + subTotal);
+
+           
+            i++;
         }
 
        
-        System.out.println( palabraInvertida);
-        
-        
-        
+        System.out.println("El total es: " + total);
         
     }
     
